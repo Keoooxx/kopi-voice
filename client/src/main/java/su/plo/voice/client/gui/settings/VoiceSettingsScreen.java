@@ -303,21 +303,24 @@ public final class VoiceSettingsScreen extends GuiScreen implements GuiWidgetLis
             versionColor = McTextStyle.YELLOW;
         }
 
+        // Kopi Voice: el titulo es "<nombre> <version> Settings"; ponemos "Kopi" y "Voice" en esos huecos
+        // para que se lea "Kopi Voice" + "Configuracion" en cualquier idioma, sin numero de version.
         McTextComponent title = McTextComponent.translatable(
                 "gui.plasmovoice.title",
-                McTextComponent.literal("Plasmo Voice"),
-                McTextComponent.literal(StringsKt.substringBefore(version.toString(), "+", version.toString()))
-                        .withStyle(versionColor)
+                McTextComponent.literal("Kopi"),
+                McTextComponent.literal("Voice")
         );
 
         if (LanguageUtil.getOrDefault("gui.plasmovoice.title").split("%").length != 3) {
-            return McTextComponent.literal(String.format("Plasmo Voice %s%s Settings", versionColor, version));
+            return McTextComponent.literal("Kopi Voice");
         }
 
         return title;
     }
 
     private TooltipData getVersionTooltip(int mouseX, int mouseY) {
+        // Kopi Voice no muestra la version en el titulo, asi que tampoco el aviso de "beta"
+        if (true) return null;
         SemanticVersion version = SemanticVersion.parse(BuildConstants.VERSION);
         if (version.isRelease()) return null;
 

@@ -34,7 +34,14 @@ class PlasmoCrowdinPack(
     override fun getResource(packType: PackType, resourceLocation: ResourceLocation): IoSupplier<InputStream>? {
         if (resourceLocation.namespace != "plasmovoice") return null
         if (!resourceLocation.path.startsWith("lang/")) return null
-        return getRootResource(resourceLocation.path.substringAfter("lang/"))
+        val file = File(crowdinFolder, resourceLocation.path.substringAfter("lang/"))
+        if (!file.exists()) return null
+        // Kopi Voice: tambien en traducciones descargadas antes (por ejemplo de una instalacion previa de Plasmo Voice)
+        return IoSupplier<InputStream> {
+            java.io.ByteArrayInputStream(
+                file.readText(Charsets.UTF_8).replace("Plasmo Voice", "Kopi Voice").toByteArray(Charsets.UTF_8)
+            )
+        }
     }
 
     override fun listResources(

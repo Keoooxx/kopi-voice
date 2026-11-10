@@ -16,14 +16,17 @@ jobs:
       - uses: ./.github/actions/setup-build
       - name: Compilar el mod (Fabric 1.21.1)
         run: ./gradlew :client:1.21.1-fabric:build --stacktrace -Pproject.client.only=1.21.1-fabric
+      - name: Nombre final (sin version)
+        run: |
+          cd build/libs
+          rm -f *-sources.jar *-dev.jar
+          mv KopiVoice-fabric-1.21.1-*.jar KopiVoice-fabric-1.21.1.jar
+          ls -la
       - name: Subir el mod
         uses: actions/upload-artifact@v7.0.1
         with:
           name: KopiVoice-fabric-1.21.1
-          path: |
-            build/libs/KopiVoice-fabric-*.jar
-            !build/libs/*-sources.jar
-            !build/libs/*-dev.jar
+          path: build/libs/KopiVoice-fabric-1.21.1.jar
           if-no-files-found: error
 
   server-paper:
@@ -35,11 +38,15 @@ jobs:
       - uses: ./.github/actions/setup-build
       - name: Compilar el plugin de servidor (Paper)
         run: ./gradlew :server:paper:build --stacktrace -Pproject.client.disable=true
+      - name: Nombre final (sin version)
+        run: |
+          cd build/libs
+          rm -f *-sources.jar
+          mv KopiVoice-Paper-*.jar KopiVoice-Paper.jar
+          ls -la
       - name: Subir el plugin
         uses: actions/upload-artifact@v7.0.1
         with:
           name: KopiVoice-server-paper
-          path: |
-            build/libs/KopiVoice-Paper-*.jar
-            !build/libs/*-sources.jar
+          path: build/libs/KopiVoice-Paper.jar
           if-no-files-found: error
