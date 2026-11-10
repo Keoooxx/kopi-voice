@@ -219,6 +219,11 @@ tasks {
             exclude("assets/plasmovoice/shaders/*.json")
         }
 
+        // Kopi Voice: nombre visible en todas las traducciones
+        filesMatching("assets/plasmovoice/lang/*.json") {
+            filter { line -> line.replace("Plasmo Voice", "Kopi Voice") }
+        }
+
         filesMatching(listOf("**/*.vsh", "**/*.fsh")) {
             filter { line ->
                 val trimmed = line.trimStart()

@@ -33,7 +33,9 @@ object PlasmoCrowdinMod {
 
             crowdinFolder.mkdirs()
             translations.forEach { (languageName, languageBytes) ->
-                File(crowdinFolder, "$languageName.json").writeBytes(languageBytes)
+                File(crowdinFolder, "$languageName.json").writeBytes(
+                    languageBytes.toString(Charsets.UTF_8).replace("Plasmo Voice", "Kopi Voice").toByteArray(Charsets.UTF_8)
+                )
             }
             saveTimestamp(crowdinFolder)
 

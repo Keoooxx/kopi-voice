@@ -2,10 +2,11 @@
     "schemaVersion": 1,
     "id": "plasmovoice",
     "version": "${version}",
-    "name": "Plasmo Voice",
-    "description": "A proximity voice chat mod with audio positioning and lots of features",
+    "name": "Kopi Voice",
+    "description": "Chat de voz por proximidad de Kopi Studio. Basado en Plasmo Voice (https://github.com/plasmoapp/plasmo-voice), bajo licencia LGPL-3.0.",
     "authors": [
-        "Plasmo"
+        "Kopi Studio",
+        "Plasmo (autores de Plasmo Voice)"
     ],
     "contact": {
         "homepage": "https://github.com/plasmoapp/plasmo-voice",
