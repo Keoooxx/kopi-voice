@@ -50,3 +50,32 @@ jobs:
           name: KopiVoice-server-paper
           path: build/libs/KopiVoice-Paper.jar
           if-no-files-found: error
+
+  # Publica una release con enlaces fijos y publicos:
+  #   https://github.com/Keoooxx/kopi-voice/releases/latest/download/KopiVoice-fabric-1.21.1.jar
+  #   https://github.com/Keoooxx/kopi-voice/releases/latest/download/KopiVoice-Paper.jar
+  release:
+    needs: [client-fabric-1211, server-paper]
+    if: github.ref == 'refs/heads/kopi-voice'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v7.0.0
+        with:
+          path: dist
+          merge-multiple: true
+      - name: Publicar release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: kopi-${{ github.run_number }}
+          name: Kopi Voice (compilacion ${{ github.run_number }})
+          target_commitish: ${{ github.sha }}
+          make_latest: true
+          body: |
+            Kopi Voice para Fabric 1.21.1 (basado en Plasmo Voice, LGPL-3.0).
+            - Jugadores y servidores Fabric/Arclight: KopiVoice-fabric-1.21.1.jar en la carpeta mods (con Fabric API).
+            - Servidores Paper: KopiVoice-Paper.jar en la carpeta plugins.
+          files: |
+            dist/KopiVoice-fabric-1.21.1.jar
+            dist/KopiVoice-Paper.jar
