@@ -8,7 +8,8 @@ y se distribuye bajo la misma licencia **LGPL-3.0** (ver `LICENSE`). Todo el mer
 los cambios de Kopi Studio estan en este repositorio y son publicos, como exige la licencia.
 
 ## Cambios respecto a Plasmo Voice
-- Nombre visible "Kopi Voice" (mod, menus y traducciones).
+- Nombre visible "Kopi Voice" (mod, menus y traducciones) e icono de Kopi Studio.
+- Archivos `KopiVoice-fabric-1.21.1-*.jar` (cliente) y `KopiVoice-Paper-*.jar` (servidor).
 - Sin avisos de actualizacion de Plasmo Voice.
 - Compilacion automatica (GitHub Actions) solo de lo que usamos: cliente Fabric 1.21.1 y plugin Paper.
 

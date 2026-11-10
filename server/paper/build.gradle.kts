@@ -11,7 +11,7 @@ plugins {
 
 group = "$group.server"
 
-base.archivesName.set("${rootProject.name}-Paper")
+base.archivesName.set("KopiVoice-Paper")
 javaVersion = 21
 
 repositories {

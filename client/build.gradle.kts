@@ -24,7 +24,7 @@ if (isMainProject) {
 }
 
 group = "$group.client"
-base.archivesName.set("plasmovoice-${platform.loaderStr}-${platform.mcVersionStr}")
+base.archivesName.set("KopiVoice-${platform.loaderStr}-${platform.mcVersionStr}")
 
 loom.noServerRunConfigs()
 
